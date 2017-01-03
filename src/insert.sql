@@ -17,6 +17,7 @@ INSERT INTO CHAPITRE  (id,titre,text,controle_id,id_module)  VALUES ('2','interf
 INSERT INTO QCM_QUESTION VALUES ('1', '100');
 INSERT INTO QCM_QUESTION VALUES ('1', '200');
 //question 100
+//qyestion 1001
 INSERT INTO Question  VALUES ('100', 'en quelle année a était créé le langage java ?','1');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1993');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1995');
