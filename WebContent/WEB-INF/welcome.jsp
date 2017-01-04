@@ -1,3 +1,4 @@
+<%@page import="bean.BeanModule"%>
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -52,18 +53,28 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#${module.id}">
-		        	<h3> ${module.titre} <small>- par Mr. ${module.prof.id}	</small></h3>
+		        	 ${module.titre} <small>- par Mr. ${module.prof.id}	</small>
 		        </a>  		
 		      </h4>
 		    </div>
 		    <div id="${module.id}" class="panel-collapse collapse">
 		      <div class="panel-body">
 		      	Ici la description du module, vous pouvez meme penser a integrer la liste des chapitres ici !
+		      	
+		      	
 		      	<br>
 		      	<br>
-		      	<small style="color: green">inscrit</small>
+		      </div>
+		      if
+		      <div class="panel-footer"><span style="color: green">Inscrit...</span></div>
+		      else
+		      <div class="panel-footer">
+		      		<a  href="etudiantServlet?page=m&id_m=${module.id}" >
+		        		<button type="button" class="btn btn-primary" >S'inscrire</button>
+		      		</a>
 		      </div>
 		    </div>
+		    
 		  </div>
 		</c:forEach>
 		
@@ -73,7 +84,7 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#${module.id}">
-		        	<h3> ${module.titre} <small>- par Mr. ${module.prof.id}	</small></h3> 
+		        	${module.titre} <small>- par Mr. ${module.prof.id}	</small>
 		        </a>		         
 		      </h4>
 		    </div>
@@ -81,9 +92,12 @@
 		      <div class="panel-body">
 		      	Ici la description du module, vous pouvez meme penser a integrer la liste des chapitres ici !
 		      	<br>
-		      	<a  href="etudiantServlet?page=m&id_m=${module.id}" >
-		        	<button type="button" class="btn btn-primary" >S'inscrire</button>
-		      	</a>
+		      	<br>		      	
+		      </div>
+		      <div class="panel-footer">
+		      		<a  href="etudiantServlet?page=m&id_m=${module.id}" >
+		        		<button type="button" class="btn btn-primary" >S'inscrire</button>
+		      		</a>
 		      </div>
 		    </div>
 		  </div>
