@@ -14,11 +14,21 @@
 </head>
 
 <body>
-
+<%
+	String type=request.getParameter("type");%>
 	<ol class="breadcrumb">
-	  <li><a href="etudiantServlet?page=h">Home</a></li>
-	  <li><a href="etudiantServlet?page=m">Modules</a></li>
-	  <li><a href="etudiantServlet?page=i">Mes inscriptions</a></li>
+	<c:choose>
+		<c:when test='${type=="Etud"}'>
+		  <li><a href="etudiantServlet?page=h">Home</a></li>
+		  <li><a href="etudiantServlet?page=m">Modules</a></li>
+		  <li><a href="etudiantServlet?page=i">Mes inscriptions</a></li>
+	   </c:when>
+	   <c:otherwise>
+		  <li><a href="welcomeProf?page=h">Home</a></li>
+		  <li><a href="welcomeProf?page=m">Mes modules</a></li>	
+       </c:otherwise>
+		        	
+	</c:choose>
 	</ol>
 	
 	<div class="row">

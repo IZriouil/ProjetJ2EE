@@ -54,7 +54,7 @@
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">	        
-		        <h3> ${module.titre} <small>- par Mr. ${module.prof.id}</small></h3> 
+		        <a href="ModuleServlet?page=h&id_m=${module.id}"><h3> ${module.titre} <small>- par Mr. ${module.prof.id}</small></h3></a> 
 		        		<a class="btn btn-primary btn-lg" href="welcomeProf?page=a&id_m=${module.id}">Ajouter chapitre</a>
 		        		
 		        
