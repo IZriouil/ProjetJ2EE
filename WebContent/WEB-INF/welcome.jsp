@@ -1,4 +1,3 @@
-<%@page import="bean.BeanModule"%>
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -60,19 +59,10 @@
 		    <div id="${module.id}" class="panel-collapse collapse">
 		      <div class="panel-body">
 		      	Ici la description du module, vous pouvez meme penser a integrer la liste des chapitres ici !
-		      	
-		      	
 		      	<br>
 		      	<br>
 		      </div>
-		      if
 		      <div class="panel-footer"><span style="color: green">Inscrit...</span></div>
-		      else
-		      <div class="panel-footer">
-		      		<a  href="etudiantServlet?page=m&id_m=${module.id}" >
-		        		<button type="button" class="btn btn-primary" >S'inscrire</button>
-		      		</a>
-		      </div>
 		    </div>
 		    
 		  </div>
@@ -98,7 +88,7 @@
 		      		<a  href="etudiantServlet?page=m&id_m=${module.id}" >
 		        		<button type="button" class="btn btn-primary" >S'inscrire</button>
 		      		</a>
-		      </div>
+		      	</div>
 		    </div>
 		  </div>
 		</c:forEach>					  
