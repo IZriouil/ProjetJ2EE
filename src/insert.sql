@@ -17,7 +17,7 @@ INSERT INTO CHAPITRE  (id,titre,text,controle_id,module_id)  VALUES ('2','interf
 
 //question 100
 //qyestion 1001
-//Question Issam2211
+//Question Issam2211 quimarque
 INSERT INTO Question  VALUES ('100', 'en quelle annngage java ?','1');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1993');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1995');
