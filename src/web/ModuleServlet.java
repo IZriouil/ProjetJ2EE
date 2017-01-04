@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.BeanChapitre;
 import bean.BeanQCM;
 import bean.BeanQuestion;
+import bean.BeanUsers;
 import entity.Chapitre;
 import entity.Question;
 
@@ -26,6 +27,8 @@ import entity.Question;
 
 public class ModuleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@EJB
+	private BeanUsers bean;
 	@EJB
 	private	BeanChapitre beanChapitre = new BeanChapitre();
 	@EJB
@@ -42,6 +45,7 @@ public class ModuleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String module=request.getParameter("id_m");
 		List<Chapitre> listChapitre = new ArrayList<Chapitre>();
+		String username = (String) request.getSession().getAttribute("username");
 		
 		// Correction du qcm
 		String reponse =request.getParameter("1001");
@@ -79,6 +83,8 @@ public class ModuleServlet extends HttpServlet {
 		if(page==null)page="qcm";
 		switch (page) {
         case "h": request.setAttribute("chapitres", listChapitre);
+        		  System.out.println("looool"+bean.getUser(username).getType());
+        		  request.setAttribute("type", bean.getUser(username).getType());
 				  this.getServletContext().getRequestDispatcher("/WEB-INF/module.jsp?page=h").forward(request, response);  		 
                   break;
                   
