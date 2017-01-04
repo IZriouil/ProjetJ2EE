@@ -88,7 +88,7 @@
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
-		        <a href="ModuleServlet?page=m&id_m=${inscri.module.id}">
+		        <a href="ModuleServlet?page=h&id_m=${inscri.module.id}">
 		        	<h3> ${inscri.module.titre} <small>- par Mr. ${inscri.module.prof.id}	
 		        	-avancement : ${inscri.niveauAvancement} %</small> 	        			        	      
 		        	</h3>		        	
@@ -96,8 +96,7 @@
 		        
 		      </h4>
 		    </div>
-		    <div id="${module.id}" class="panel-collapse collapse">
-		    </div>
+		  
 		  </div>
 		</c:forEach>  
 	</div> 

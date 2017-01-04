@@ -18,7 +18,7 @@ public class Chapitre {
 	@OneToOne
 	private QCM controle;
 	@ManyToOne(targetEntity=Module.class)
-	@JoinColumn(name="id_module")
+	
 	private Module module;
 	private String text;
 	

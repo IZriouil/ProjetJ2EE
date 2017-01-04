@@ -11,11 +11,10 @@ INSERT INTO INSCRIPTION  VALUES ('12-12-2015','33', '12','Issam');
 INSERT INTO INSCRIPTION  VALUES ('12-08-2017','37', '4','Issam');
 INSERT INTO QCM  VALUES ('1', '12');
 INSERT INTO QCM  VALUES ('2', '12');
-INSERT INTO CHAPITRE (id,titre,text,controle_id,id_module)  VALUES ('1','heritage java', 'contenu chapitre...','1','12');
-INSERT INTO CHAPITRE  (id,titre,text,controle_id,id_module)  VALUES ('2','interfaces', 'contenu chapitre...contenu   is simply dummy text of the printing and typesetting industry industry chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...','2','12');
+INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('1','heritage java', 'contenu chapitre...','1','12');
+INSERT INTO CHAPITRE  (id,titre,text,controle_id,module_id)  VALUES ('2','interfaces', 'contenu chapitre...contenu   is simply dummy text of the printing and typesetting industry industry chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...','2','12');
 //Question
-INSERT INTO QCM_QUESTION VALUES ('1', '100');
-INSERT INTO QCM_QUESTION VALUES ('1', '200');
+
 //question 100
 //qyestion 1001
 //Question Issam2211

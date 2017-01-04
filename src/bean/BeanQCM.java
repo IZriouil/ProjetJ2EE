@@ -47,17 +47,7 @@ public class BeanQCM {
 	   
 	
    public boolean controlValide(QCM controle,Etudiant etudiant){
-	   /*Validation 	public List<Integer> getQCM_Questions_id(int Id){
-		Query query = em.createQuery("select idQuestion  from Question   where controle.id  = :ID");
-		query.setPar	public List<Integer> getQCM_Questions_id(int Id){
-		Query query = em.createQuery("select idQuestion  from Question   where controle.id  = :ID");
-		query.setParameter("ID",Id);
-		 return  query.getResultList();
-	}
-	ameter("ID",Id);
-		 return  query.getResultList();
-	}
-	ec = new Validation();
+	   /*Validation ec = new Validation();
 	   ec.setC(c) ; ec.setE(e);
 	   if(ec.getScore()>c.getMinscore()){ ec.setaValide(true); c.getOntValide().add(e);}
 	   else ec.setaValide(false); //retry

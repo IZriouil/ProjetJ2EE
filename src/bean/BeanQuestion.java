@@ -29,8 +29,5 @@ public class BeanQuestion {
 		else return question;
 		
 	}
-	public void creatQuestion(String Enonce,List<String> reponses,List<String> reponsesJustes){
-		
-		
-	}
+
 }
