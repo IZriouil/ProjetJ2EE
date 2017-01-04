@@ -18,7 +18,7 @@ INSERT INTO QCM_QUESTION VALUES ('1', '100');
 INSERT INTO QCM_QUESTION VALUES ('1', '200');
 //question 100
 //qyestion 1001
-//Question Issam
+//Question Issam222
 INSERT INTO Question  VALUES ('100', 'en quelle annngage java ?','1');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1993');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1995');
