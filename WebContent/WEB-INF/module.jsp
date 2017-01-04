@@ -79,25 +79,29 @@
 		break;
 		case "qcm":
 	%>
+			<form action="ModuleServlet" method="get">
 					<div class="table-responsive">
 							  <table class="table"> 								
 								<c:forEach items="${listQuestionsQCM}" var="uneQuestion">
 										  <tr>
 											  <td class="">${uneQuestion.getEnonce()}</td>
-											  
-											  <c:forEach items="${uneQuestion.reponses}" var="reponse">
-											  		<td class="">
-											  			<label class="checkbox-inline">
-												  		<input type="checkbox" id="inlineCheckbox1" value="option1"> ${reponse}
-														</label>
-													</td>					  						  		  
-											  </c:forEach>
+												  	<% int i =1; %>
+												  	<c:forEach items="${uneQuestion.reponses}" var="reponse">
+												  	<td class="">
+												  		<label class="checkbox-inline">
+															<input type="checkbox" name="${uneQuestion.getIdQuestion()}<%out.print(i);%>" id="${uneQuestion.getIdQuestion()}<%out.print(i);%>"  value="${reponse}"> ${reponse} 
+														 </label>
+													</td>
+													<%  i ++; %>					  						  		  
+												   </c:forEach>
 											  <td class=""></td>
 					  								  							  						  		  
 										 </tr>
 								</c:forEach>
 							</table>
 					</div>
+				<input type="submit" value="Submit">
+			</form>
 	
 	<%
 		break;
