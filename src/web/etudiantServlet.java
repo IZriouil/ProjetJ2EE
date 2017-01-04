@@ -21,7 +21,7 @@ public class etudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private BeanModule beanM;
+	private BeanModule  beanM;
 	
 	
 	public etudiantServlet() {
