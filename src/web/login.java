@@ -50,7 +50,18 @@ public class login extends HttpServlet {
 		
 		if(status != null && status.equals("up")){
 			System.out.println(status);
-			this.getServletContext().getRequestDispatcher("/etudiantServlet?page=h").forward(request, response);
+			String type =bean.getUser(username).getType();
+			switch (type) {
+        	case "Etud":this.getServletContext().getRequestDispatcher("/etudiantServlet?page=h").forward(request, response);	
+                  break;        
+        	case "Prof":this.getServletContext().getRequestDispatcher("/welcomeProf?page=h").forward(request, response);
+                  break;
+        	case "Admin":this.getServletContext().getRequestDispatcher("/welcomeAdmin?page=h").forward(request, response);	
+                  break;
+        	default:  this.getServletContext().getRequestDispatcher("/etudiantServlet?page=h").forward(request, response);
+                  break;
+		}
+			
 		}
 		else{
 			
