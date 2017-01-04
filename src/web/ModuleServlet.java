@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.BeanChapitre;
 import bean.BeanQCM;
 import bean.BeanQuestion;
+import bean.BeanUsers;
 import entity.Chapitre;
 import entity.Question;
 
@@ -26,6 +27,8 @@ import entity.Question;
 
 public class ModuleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@EJB
+	private BeanUsers bean;
 	@EJB
 	private	BeanChapitre beanChapitre = new BeanChapitre();
 	@EJB
@@ -43,6 +46,7 @@ public class ModuleServlet extends HttpServlet {
 		String module=request.getParameter("id_m");
 		List<Chapitre> listChapitre = new ArrayList<Chapitre>();
 		List<Question> listQuestionsQCM = new ArrayList<Question>();
+		String username = (String) request.getSession().getAttribute("username");
 		
 		if(module!=null){
 			request.getSession().setAttribute("module", module);	
@@ -74,6 +78,8 @@ public class ModuleServlet extends HttpServlet {
 		String page=request.getParameter("page");
 		switch (page) {
         case "h": request.setAttribute("chapitres", listChapitre);
+        		  System.out.println("looool"+bean.getUser(username).getType());
+        		  request.setAttribute("type", bean.getUser(username).getType());
 				  this.getServletContext().getRequestDispatcher("/WEB-INF/module.jsp?page=h").forward(request, response);  		 
                   break;
                   
