@@ -78,14 +78,6 @@ public class login extends HttpServlet {
 					String type =bean.getUser(username).getType();
 					System.out.println("voilaaa un ------"+type	);
 					
-					System.out.println("notre question a un id egal à "+beanQCM.getQCM_Questions_id(1).get(0).intValue());
-					Question uneQuestion = beanQuestion.getQuestionById(100);
-					System.out.println("notre premier question est "+uneQuestion.getEnonce());
-					List<String> listrep = uneQuestion.getReponses();
-					List<String> listrepJuste = uneQuestion.getReponsesJuste();
-
-					System.out.println("les reponses possibles sont  "+listrep.toString());
-					System.out.println("les reponses JUSTE  "+listrepJuste.get(0));
 
 
 					/*

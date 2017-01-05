@@ -60,8 +60,14 @@
 					  <td class="success">${chapitre.module.prof.id}</td>
 					  <td class="success">${chapitre.module.titre}</td>
 					  <td class="success"><a href="ModuleServlet?page=lire&ch_id=${chapitre.id}" >Lire</a></td>
-					  <td class="success"><a href="ModuleServlet?page=qcm&qcm_id=${chapitre.controle.id}" >QCM</a></td>	
-					  
+					  <c:choose>
+					  	<c:when test='${not empty chapitre.controle.id}'>	
+					  		<td class="success"><a href="ModuleServlet?page=qcm&qcm_id=${chapitre.controle.id}" >QCM</a></td>	
+					  	</c:when>
+					  	<c:otherwise>
+					  		<td class="success"><a href="welcomeProf?page=qf&id_c=${chapitre.id}" >Ajouter QCM</a></td>
+					  	</c:otherwise>
+					  </c:choose>
 					  
 				 </tr>
 		</c:forEach>

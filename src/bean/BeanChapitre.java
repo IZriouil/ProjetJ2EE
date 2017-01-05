@@ -37,5 +37,14 @@ public class BeanChapitre {
 	}
 	
 
-	public void aAccesChapitreSuivant(){}
+	public Chapitre getChapitreId(int chapitreId){
+		Query query = em.createQuery("select c from Chapitre c where id  = :ID");
+		query.setParameter("ID",chapitreId);
+		
+			return (Chapitre)query.getSingleResult();
+		
+	}
+	public Chapitre updateControle (Chapitre chapitre) {
+	    return em.merge(chapitre);
+	}
 }

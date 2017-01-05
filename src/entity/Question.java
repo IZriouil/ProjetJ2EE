@@ -27,10 +27,9 @@ public class Question {
 	@ElementCollection(fetch = FetchType.EAGER)
 	protected List<String> reponsesJuste; 
 	
-	public Question(int idQuestion, QCM controle, String enonce,
+	public Question( QCM controle, String enonce,
 			List<String> reponses, List<String> reponsesJuste) {
 		super();
-		this.idQuestion = idQuestion;
 		this.controle = controle;
 		Enonce = enonce;
 		this.reponses = reponses;

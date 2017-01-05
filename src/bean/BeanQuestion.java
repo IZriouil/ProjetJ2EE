@@ -8,6 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entity.Chapitre;
+import entity.Module;
+import entity.QCM;
 import entity.Question;
 
 @Stateless
@@ -28,6 +31,16 @@ public class BeanQuestion {
 			return (Question) query.getSingleResult();
 		else return question;
 		
+	}
+	public Question createQuestion( QCM controle, String enonce,
+			List<String> reponses, List<String> reponsesJuste){
+		Question question = new  Question( controle, enonce,
+				 reponses,  reponsesJuste);
+		controle.getQuestions().add(question);
+		question.setControle(controle);
+		em.persist(question);
+		em.flush();
+		return question;
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import entity.Chapitre;
 import entity.Etudiant;
+import entity.Module;
 import entity.QCM;
 import entity.Question;
 import entity.Validation;
@@ -20,11 +21,7 @@ public class BeanQCM {
 	@PersistenceContext(name="monMiniProjet")
 	EntityManager em;
 	
-	public QCM createQCM( List<Validation> validations, int minScore,List<Question> questions){
-		QCM controle=new QCM(validations, minScore,questions);
-		em.persist(controle);
-		return controle; 
-	}
+
 	  /* public int corrigerControl(List<String> reponses,Controle c,Etudiant e){
 	   EtudiantControl ec = new EtudiantControl();
 	 for(Question q:c.getQuestions()){
@@ -46,17 +43,13 @@ public class BeanQCM {
 	}
 	   
 	
-   public boolean controlValide(QCM controle,Etudiant etudiant){
-	   /*Validation ec = new Validation();
-	   ec.setC(c) ; ec.setE(e);
-	   if(ec.getScore()>c.getMinscore()){ ec.setaValide(true); c.getOntValide().add(e);}
-	   else ec.setaValide(false); //retry
-	   em.persist(c);
-	   em.persist(ec);*/
-	   return true;
-   }/*
-public int max(int i,int j){
-	if(i<j) return j; 
-	else return i;
-}*/
+	public QCM createControle(int minScore,boolean afficherScore,int nombreQuestion,List<Question> questions){
+		QCM controle = new QCM(minScore,afficherScore,nombreQuestion,questions);
+		
+		em.persist(controle);
+		em.flush();
+		return controle;
+	}
+
+
 }

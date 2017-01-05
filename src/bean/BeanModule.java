@@ -80,15 +80,7 @@ public class BeanModule {
 	
 	
 	
-	public String getNiveauAvancement(Module m,Etudiant e){
-		int i=0;
-		for(Chapitre c:m.getChapitres()){
-			if(beanControle.controlValide(c.getControle(), e))
-			{i++;}
-			}
-	String str="Issam";
-	return str;
-	}
+	
 			
 
 }

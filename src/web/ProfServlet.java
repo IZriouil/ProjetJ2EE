@@ -31,12 +31,17 @@ public class ProfServlet extends HttpServlet {
 		
 		String status=(String) request.getSession().getAttribute("status");
 		String module_id="toto";
+		String chapitre_id="toto";
 		if(request.getParameter("id_m")!=null){
 			 module_id=request.getParameter("id_m");
-			request.getSession().setAttribute("module_id", module_id);
+			
 			System.out.println(module_id);
 			}
-		else System.out.println("ID MODULE NULL");
+		if(request.getParameter("id_c")!=null){
+			 chapitre_id=request.getParameter("id_c");
+
+			}
+		
 		
 		if(status!=null && status.equals("up")){
 			String page=request.getParameter("page");
@@ -52,8 +57,12 @@ public class ProfServlet extends HttpServlet {
 	        case "a":request.setAttribute("id_m", module_id);	
 	        	     this.getServletContext().getRequestDispatcher("/WEB-INF/welcomeProf.jsp?page=a").forward(request, response);
 	                 break;
-	        case "q": this.getServletContext().getRequestDispatcher("/WEB-INF/welcomeProf.jsp?page=q").forward(request, response);
+	        case "q": 
+	        		  this.getServletContext().getRequestDispatcher("/WEB-INF/welcomeProf.jsp?page=q").forward(request, response);
 	        		  break;
+	        case "qf":request.setAttribute("id_c", chapitre_id);
+	        		  this.getServletContext().getRequestDispatcher("/WEB-INF/welcomeProf.jsp?page=qf").forward(request, response);
+  		  			  break;
 	        default:  this.getServletContext().getRequestDispatcher("/WEB-INF/welcomeProf.jsp?page=h").forward(request, response);	//Default Home
 	                  break;
 			}
