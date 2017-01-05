@@ -74,12 +74,29 @@ public class BeanQCM {
 			String date_now = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 			
 			//etudiant passe le qcm pour la 1 er fois
-			if(this.getNbrEssais(etudiant.getId(),qcm.getId())==null){
-				if(score>miniScore){
-					this.createValidation(qcm,etudiant, date_now,1, score);
+			Validation validation=this.getNbrEssais(etudiant.getId(),qcm.getId());
+			if(validation==null){
+					if(score>miniScore){//qcm validé
+						this.createValidation(qcm,etudiant, date_now,1, score);
+					}
+					else{//qcm non validé
+						this.createValidation(qcm,etudiant, " ",1, score);	
+					}
+			
+			//etudiant a deja passé le qcm
+			}else{
+				int nbr_essayes=validation.getNbEssai()+1;
+				if(score>miniScore){//qcm validé
+					validation.setDateValidation(date_now);
+					validation.setScore_validation(score);
+					validation.setNbEssai(nbr_essayes);;
+					this.updateValidation(validation);
 				}
-				else{
-					this.createValidation(qcm,etudiant, " ",1, score);	
+				else{//qcm non validé
+					validation.setDateValidation(" ");
+					validation.setScore_validation(score);
+					validation.setNbEssai(nbr_essayes);
+					this.updateValidation(validation);
 				}
 			}
 		}
@@ -92,9 +109,6 @@ public class BeanQCM {
 		 return  query.getResultList();
 	}
 	   
-	
-	
-
 	public Validation createValidation(QCM qcm, Etudiant etudiant, String datev,int nbEssai , int score){
 		Validation validation = new Validation(qcm,etudiant,datev,nbEssai, score);
 		List<Validation> listv = new ArrayList<Validation>();
@@ -111,6 +125,10 @@ public class BeanQCM {
 		return validation;
 	}
 	
-	
+	public boolean updateValidation(Validation validation ){
+			em.merge(validation);
+		    em.flush();
+		return true;
+	}
    
 }

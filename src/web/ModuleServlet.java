@@ -19,6 +19,7 @@ import bean.BeanUsers;
 import entity.Chapitre;
 import entity.Etudiant;
 import entity.Question;
+import entity.Validation;
 
 /**
  * Servlet implementation class ModuleServlet
@@ -52,9 +53,12 @@ public class ModuleServlet extends HttpServlet {
 		// Correction du qcm
 		int score = beanQCM.corrigerQcm(listQuestionsQCM , request,(Etudiant)bean.getUser(username));
 		System.out.println("votre score est ---------"+score);
-		if(beanQCM.getNbrEssais("Issam",1)!=null)
+		Validation validation= beanQCM.getNbrEssais("Issam",1);
+		if(validation!=null){
 			System.out.println("Issam est dans la table validation");
-				
+			//validation.setDateValidation("date_update");
+			//beanQCM.updateValidation(validation);
+		}
 		if(module!=null){
 			request.getSession().setAttribute("module", module);	
 			System.out.println("les chapitres de ce module von etre affiches---------"+module);

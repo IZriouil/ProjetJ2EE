@@ -9,7 +9,7 @@ INSERT INTO Module (id,titre,prof_id) VALUES ('14','l9wada', 'Moha');
 INSERT INTO Module (id,titre,prof_id) VALUES ('4','Beans', 'Moha');
 INSERT INTO INSCRIPTION  VALUES ('12-12-2015','33', '12','Issam');
 INSERT INTO INSCRIPTION  VALUES ('12-08-2017','37', '4','Issam');
-INSERT INTO QCM  VALUES ('1', '12');
+INSERT INTO QCM  VALUES ('1', '1');
 INSERT INTO QCM  VALUES ('2', '12');
 INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('20','heritage java', 'contenu chapitre...','1','12');
 INSERT INTO CHAPITRE  (id,titre,text,controle_id,module_id)  VALUES ('30','interfaces', 'contenu chapitre...contenu   is simply dummy text of the printing and typesetting industry industry chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...','2','12');
