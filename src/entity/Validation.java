@@ -14,9 +14,37 @@ public class Validation implements Serializable {
 	private QCM controle; 
 	@Id @ManyToOne 
 	private Etudiant etudiant;
-	private Date dateValidation;
-	private int nbEssai;
+	private String dateValidation;
+	private int nbEssai=0;
+	private int score_validation;
+	public Validation() {
+		super();
+	}
 	
+	
+	
+	public Validation(QCM controle, Etudiant etudiant, String dateValidation,
+			int nbEssai, int score_validation) {
+		super();
+		this.controle = controle;
+		this.etudiant = etudiant;
+		this.dateValidation = dateValidation;
+		this.nbEssai = nbEssai;
+		this.score_validation = score_validation;
+	}
+
+
+
+	public int getScore_validation() {
+		return score_validation;
+	}
+
+
+	public void setScore_validation(int score_validation) {
+		this.score_validation = score_validation;
+	}
+
+
 	public QCM getControle() {
 		return controle;
 	}
@@ -29,10 +57,10 @@ public class Validation implements Serializable {
 	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
 	}
-	public Date getDateValidation() {
+	public String getDateValidation() {
 		return dateValidation;
 	}
-	public void setDateValidation(Date dateValidation) {
+	public void setDateValidation(String dateValidation) {
 		this.dateValidation = dateValidation;
 	}
 	public int getNbEssai() {

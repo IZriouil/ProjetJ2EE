@@ -17,6 +17,7 @@ import bean.BeanQCM;
 import bean.BeanQuestion;
 import bean.BeanUsers;
 import entity.Chapitre;
+import entity.Etudiant;
 import entity.Question;
 
 /**
@@ -49,10 +50,11 @@ public class ModuleServlet extends HttpServlet {
 		String username = (String) request.getSession().getAttribute("username");
 		
 		// Correction du qcm
-		String reponse =request.getParameter("1001");
-		System.out.println("vous avez cocher la case ---------"+reponse);
-
-
+		int score = beanQCM.corrigerQcm(listQuestionsQCM , request,(Etudiant)bean.getUser(username));
+		System.out.println("votre score est ---------"+score);
+		if(beanQCM.getNbrEssais("Issam",1)!=null)
+			System.out.println("Issam est dans la table validation");
+				
 		if(module!=null){
 			request.getSession().setAttribute("module", module);	
 			System.out.println("les chapitres de ce module von etre affiches---------"+module);

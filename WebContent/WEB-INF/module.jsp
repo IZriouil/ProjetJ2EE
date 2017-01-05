@@ -85,12 +85,12 @@
 								<c:forEach items="${listQuestionsQCM}" var="uneQuestion">
 										  <tr>
 											  <td class="">${uneQuestion.getEnonce()}</td>
-												  	<% int i =1; %>
+												  	<% int i =0; %>
 												  	<c:forEach items="${uneQuestion.reponses}" var="reponse">
 												  	<td class="">
-												  		<label class="checkbox-inline">
+												  		 <label class="checkbox-inline">
 															<input type="checkbox" name="${uneQuestion.getIdQuestion()}<%out.print(i);%>" id="${uneQuestion.getIdQuestion()}<%out.print(i);%>"  value="${reponse}"> ${reponse} 
-														 </label>
+														 </label>													 
 													</td>
 													<%  i ++; %>					  						  		  
 												   </c:forEach>

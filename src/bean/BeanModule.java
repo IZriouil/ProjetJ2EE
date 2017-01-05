@@ -41,9 +41,6 @@ public class BeanModule {
 		return null;
 	}
 	
-	
-	
-	
 	public List<Inscription> getModulesInscrits(String etudiantId){
 		Query query = em.createQuery("select i from Inscription i where etudiant.id  = :ID");
 		query.setParameter("ID",etudiantId);
@@ -60,8 +57,8 @@ public class BeanModule {
 	}
 	
 	public boolean Inscrire(String etudiantId , int moduleId){
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		
+		String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+	
 		try{	
 			Query query = em.createNativeQuery("INSERT INTO Inscription (dataInscription, niveauAvancement,module_id,etudiant_id) " +
 		            " VALUES(?,?,?,?)");
@@ -78,17 +75,4 @@ public class BeanModule {
 		}
 	} 
 	
-	
-	
-	public String getNiveauAvancement(Module m,Etudiant e){
-		int i=0;
-		for(Chapitre c:m.getChapitres()){
-			if(beanControle.controlValide(c.getControle(), e))
-			{i++;}
-			}
-	String str="Issam";
-	return str;
-	}
-			
-
 }

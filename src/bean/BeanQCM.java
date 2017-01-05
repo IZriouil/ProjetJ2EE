@@ -1,4 +1,8 @@
 package bean;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -6,9 +10,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.ListView;
+import javax.validation.Valid;
 
 import entity.Chapitre;
 import entity.Etudiant;
+import entity.Inscription;
 import entity.QCM;
 import entity.Question;
 import entity.Validation;
@@ -25,19 +33,58 @@ public class BeanQCM {
 		em.persist(controle);
 		return controle; 
 	}
-	  /* public int corrigerControl(List<String> reponses,Controle c,Etudiant e){
-	   EtudiantControl ec = new EtudiantControl();
-	 for(Question q:c.getQuestions()){
-	 List<String> rj = q.getReponsesJustes();
-	  int score = c.getScore();
-	  int i;
-	  int max = max(rj.size(),reponses.size());
-	  for(i=0;i<max;i++){
-		  if(rj.get(i).equals(reponses.get(i))){score++;}
-	  }
-	  	c.setScore(score);
-	  	em.persist(c);
-		return score; }*/
+	
+	public Validation getNbrEssais(String etudiantId ,int qcm_id){
+		Query query = em.createQuery("select i from Validation i where etudiant.id  = :IDETUD AND controle.id = :IDQ");
+		query.setParameter("IDETUD",etudiantId );
+		query.setParameter("IDQ",qcm_id );
+		if(!query.getResultList().isEmpty())
+			return (Validation)query.getSingleResult();
+		else return null;
+	}
+	
+	public int corrigerQcm( List<Question> listQuestionsQCM ,HttpServletRequest request, Etudiant etudiant ){
+		int score =0;
+		BeanUsers beanUser = null;
+		Question uneQuestion;
+		Iterator<Question> it =listQuestionsQCM.iterator();
+		while(it.hasNext()){
+			uneQuestion=it.next();
+			int id_question=uneQuestion.getIdQuestion();
+			boolean repJuste=true;
+			int nbr_rep_donnee=0;
+			for(int i=0;i<4;i++){
+				String reponse_donne=request.getParameter(String.valueOf(id_question)+i);
+				System.out.println("votre reponse a la question "+String.valueOf(id_question)+i+" est "+reponse_donne);
+				if(reponse_donne!=null){
+					nbr_rep_donnee++;
+					if(!uneQuestion.getReponsesJuste().contains(reponse_donne)){
+						repJuste=false;
+						break;
+					}
+				}
+			}
+			
+		if(repJuste && nbr_rep_donnee==uneQuestion.getReponsesJuste().size())score++;		
+		}
+		
+		if(listQuestionsQCM.size()>0){
+			QCM qcm =listQuestionsQCM.get(0).getControle();
+			int miniScore =qcm.getMinScore();
+			String date_now = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+			
+			//etudiant passe le qcm pour la 1 er fois
+			if(this.getNbrEssais(etudiant.getId(),qcm.getId())==null){
+				if(score>miniScore){
+					this.createValidation(qcm,etudiant, date_now,1, score);
+				}
+				else{
+					this.createValidation(qcm,etudiant, " ",1, score);	
+				}
+			}
+		}
+		return score ;
+	}
 		
 	public List<Integer> getQCM_Questions_id(int Id){
 		Query query = em.createQuery("select idQuestion  from Question   where controle.id  = :ID");
@@ -46,17 +93,24 @@ public class BeanQCM {
 	}
 	   
 	
-   public boolean controlValide(QCM controle,Etudiant etudiant){
-	   /*Validation ec = new Validation();
-	   ec.setC(c) ; ec.setE(e);
-	   if(ec.getScore()>c.getMinscore()){ ec.setaValide(true); c.getOntValide().add(e);}
-	   else ec.setaValide(false); //retry
-	   em.persist(c);
-	   em.persist(ec);*/
-	   return true;
-   }/*
-public int max(int i,int j){
-	if(i<j) return j; 
-	else return i;
-}*/
+	
+
+	public Validation createValidation(QCM qcm, Etudiant etudiant, String datev,int nbEssai , int score){
+		Validation validation = new Validation(qcm,etudiant,datev,nbEssai, score);
+		List<Validation> listv = new ArrayList<Validation>();
+		listv.add(validation);
+		etudiant.setValidations(listv);
+		qcm.setValidations(listv);
+		try{
+			em.persist(validation);
+			em.flush();
+		}
+		catch(Exception ex){
+			System.out.println("erreur paire etud_id et qcm_id existe deja");
+		}
+		return validation;
+	}
+	
+	
+   
 }

@@ -19,7 +19,7 @@ public class Module {
 	private String titre; 
 	@OneToMany(fetch = FetchType.EAGER, targetEntity=Chapitre.class,mappedBy="module",orphanRemoval=true)
 	private List<Chapitre> chapitres;
-	@ManyToMany 
+	@OneToMany(fetch = FetchType.EAGER, targetEntity=Chapitre.class,mappedBy="module",orphanRemoval=true) 
 	private List<Inscription> inscriptions;
 	@ManyToOne
 	private Prof prof;
