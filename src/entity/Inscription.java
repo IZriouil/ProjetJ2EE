@@ -17,6 +17,9 @@ public class Inscription implements Serializable {
 	protected String dataInscription ;
 	private float niveauAvancement;
 	
+	public void setNiveauAvancement(float niveauAvancement) {
+		this.niveauAvancement = niveauAvancement;
+	}
 	public Module getModule() {
 		return module;
 	}

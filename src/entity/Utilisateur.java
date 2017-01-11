@@ -1,5 +1,6 @@
 package entity;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
@@ -11,8 +12,12 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE")
+@DiscriminatorColumn(name="TYPE" )
 @DiscriminatorValue("Admin")
+
+@AttributeOverride(name="TYPE", 
+	column = @Column(name="TYPE", nullable=false,
+	insertable = false, updatable = false))
 public class Utilisateur {
 	
 	@Id
@@ -21,7 +26,7 @@ public class Utilisateur {
 	private String password;
 	
 	@Column(name="type",nullable=false)
-	private String type;
+	private String TYPE;
 	
 	public String getId() {
 		return id;
@@ -36,12 +41,9 @@ public class Utilisateur {
 		this.password = password;
 	}
 	public String getType() {
-		return type;
+		return TYPE;
 	}
 	public void setType(String type) {
-		this.type = type;
+		this.TYPE = type;
 	}
-	
-	
-	
 }

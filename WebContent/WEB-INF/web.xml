@@ -7,20 +7,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>ProfServlet</servlet-name>
-    <servlet-class>web.ProfServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProfServlet</servlet-name>
-    <url-pattern>/welcomeProf</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>web.AdminServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminServlet</servlet-name>
-    <url-pattern>/welcomeAdmin</url-pattern>
-  </servlet-mapping>
+ 
+ 
+ <jsp-config>
+  <taglib>
+    <taglib-uri>testFcts</taglib-uri>
+    <taglib-location>/WEB-INF/functionsJSP.tld</taglib-location>
+  </taglib>
+  
+</jsp-config>
+
+  
 </web-app>

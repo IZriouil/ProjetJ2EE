@@ -73,74 +73,116 @@
 	  
 		  <p><a class="btn btn-primary btn-lg" style ="margin-top: 2cm" href="/welcomeProf?page=m">Ajouter Module</a></p>
      
-	</div> 
-</div>
+			</div> 
+		</div>
 
 <%
 		break;
 			case "a":
-				%>
+%>
+<div  class="col-md-6 col-md-offset-3 ">				
+		 <form method="post" class="form-horizontal" action ="AjoutChapitre">
+		  <div class="form-group form-group-lg">
+		    <label class="col-sm-2 control-label" for="formGroupInputLarge">Titre Chapitre</label>
+		    <div class="col-sm-9">
+		      <input class="form-control" type="text"  name="titre" id="titre" placeholder="Titre Chapitre">
+		    </div>
+		  </div>
+		  <div class="form-group form-group-sm">
+		    <label class="col-sm-2 control-label" for="formGroupInputSmall">Chapitre</label>
+		    <div class="col-sm-9">
+		          <textarea class="form-control"  name="texte" id="texte" placeholder="chapitre" rows="10" ></textarea>
+			  <button type="submit" class="btn btn-primary" style=" margin-top: 0.2cm;">Ajouter</button>
+			  <input type="hidden" name="id_m" value="${id_m}">
+		    </div>
+		     
+		  </div>
+		 
+		</form>
+</div>
+<% break;
+	case "qf":
+%>
+			<form method="post" class="form-horizontal" action="AjoutControle">
+				<div class="col-md-7 col-md-offset-3 ">
+				  <div class="form-group form-group-sm">
+				    <label class="col-sm-2 control-label" for="formGroupInputSmall">Nombre de Question</label>
+				    <div class="col-sm-5">
+				      <input class="form-control" type="text" id="formGroupInputSmall" name="nombreQ" placeholder="Nombre de Question">
+				    </div>
+				  </div>
+
+				  <div class="form-group form-group-sm">
+				    <label class="col-sm-2 control-label" for="formGroupInputSmall">Score Minimum</label>
+				    <div class="col-sm-5">
+				      <input class="form-control" type="text" id="formGroupInputSmall" name="scoreQ" placeholder="Score Minimum">
+				    </div>
 				
- <form method="post" class="form-horizontal" action ="AjoutChapitre">
-  <div class="form-group form-group-lg">
-    <label class="col-sm-2 control-label" for="formGroupInputLarge">Titre Chapitre</label>
-    <div class="col-sm-9">
-      <input class="form-control" type="text"  name="titre" id="titre" placeholder="Titre Chapitre">
-    </div>
-  </div>
-  <div class="form-group form-group-sm">
-    <label class="col-sm-2 control-label" for="formGroupInputSmall">Chapitre</label>
-    <div class="col-sm-9">
-          <textarea class="form-control"  name="texte" id="texte" placeholder="chapitre" rows="10" ></textarea>
-	  <button type="submit" class="btn btn-primary" style=" margin-top: 0.2cm;">Ajouter</button>
-	  <input type="hidden" name="id_m" value="${id_m}">
-	  <a class="btn btn-primary" href="welcomeProf?page=q"style=" margin-top: 0.2cm;">Ajouter QCM</a>
-    </div>
-     
-  </div>
- 
-</form>
-<%
-		break;
-			case "q":
-				%>
-	<form method="post" class="form-horizontal" action ="AjoutChapitre">
-  <div class="form-group form-group-lg">
-    <label class="col-sm-2 control-label" for="formGroupInputLarge">Question</label>
-    <div class="col-sm-9">
-      <input class="form-control" type="text"  name="titre" id="titre" placeholder="Question">
-    </div>
-  </div>
-  <div class="form-group form-group-sm">
-    <label class="col-sm-2 control-label" for="formGroupInputSmall">Responses</label>
-    <div class="col-sm-8">
-      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
-	     <input type="checkbox" value="" style = "margin-top : 0.5cm">
-	     <input class="form-control input-sm" type="text" placeholder="reponse 1">
-      </div>
-      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
-	     <input type="checkbox" value="" style = "margin-top : 0.5cm">
-	     <input class="form-control input-sm" type="text" placeholder="reponse 2">
-      </div>
-      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
-	     <input type="checkbox" value="" style = "margin-top : 0.5cm">
-	     <input class="form-control input-sm" type="text" placeholder="reponse 3">
-      </div>
-      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
-	     <input type="checkbox" value="" style = "margin-top : 0.5cm">
-	     <input class="form-control input-sm" type="text" placeholder="reponse 4">
-      </div>
-      	  <button type="submit" class="btn btn-primary" style=" margin-top: 0.2cm;">Ajouter Question</button>
-      	  	  <button type="submit" class="btn btn-primary" style=" margin-top: 0.2cm;">Ajouter QCM</button>
-         
-    </div>
-     
-  </div>
- 
-</form>
-
-
-	<% break;
+				  </div>
+				   <div class="col-md-offset-2">
+				      <label>
+                 	<input name="afficherScore" type="checkbox"> Afficher score
+                 </label>
+                 </div>
+                 <button type="submit" name="formulaire" class="btn btn-primary col-md-offset-2">Confirmer</button>
+            	 <input type="hidden" name="id_c" value="${id_c}">
+			 	</div>	
+			  
+			</form>
+			<% break;
+	case "qc":
+		int nombreQ=Integer.valueOf(request.getParameter("nombreQ"));
+		String afficherS = request.getParameter("afficherScore");
+		int scoreQ = Integer.valueOf(request.getParameter("scoreQ"));
+		String id_c = request.getParameter("id_c");
+		
+				%>	
+				=<%out.print(nombreQ); %>	
+		 <form method="post" class="form-horizontal" action ="AjoutControle">
+		 <c:forEach begin="1" end="<%=nombreQ%>"  varStatus="loop" step="1">
+		   <div class="col-md-7 col-md-offset-3 ">
+			  <div  class="form-group form-group-lg">
+			    <label class="col-sm-2 control-label" for="formGroupInputLarge">Question</label>
+			    
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text"  name="titre_${loop.count}" id="titre" placeholder="Question">
+			    </div>
+			  
+			  </div>
+			  
+			  <div  class="form-group form-group-sm">
+			    <label class="col-sm-2 control-label" for="formGroupInputSmall">Responses${loop.index}</label>
+			    <div class="col-sm-8">
+			      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
+				     <input type="checkbox" name = "reponse 1c_${loop.count}"  style = "margin-top : 0.5cm">
+				     <input class="form-control input-sm" name = "reponse 1_${loop.count}" type="text" placeholder="reponse 1">
+			      </div>
+			      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
+				     <input type="checkbox" name = "reponse 2c_${loop.count}"  style = "margin-top : 0.5cm">
+				     <input class="form-control input-sm" name = "reponse 2_${loop.count}" type="text" placeholder="reponse 2">
+			      </div>
+			      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
+				     <input type="checkbox" name = "reponse 3c_${loop.count}"  style = "margin-top : 0.5cm">
+				     <input class="form-control input-sm" name = "reponse 3_${loop.count}" type="text" placeholder="reponse 3">
+			      </div>
+			      <div class="form-group form-group-lg checkbox" style = "margin-left : 1cm" >
+				     <input type="checkbox" name = "reponse 4c_${loop.count}"  style = "margin-top : 0.5cm">
+				     <input class="form-control input-sm" name = "reponse 4_${loop.count}" type="text" placeholder="reponse 4">
+			      </div>
+			      	  
+			         
+			    </div>
+			     
+			  </div>
+			  </div>
+			  </c:forEach>
+			 <input type="hidden" name="afficherScore" value="<%=afficherS%>">
+			 <input type="hidden" name="scoreQ"" value="<%=scoreQ%>">
+			 <input type="hidden" name="nombreQ" value="<%=nombreQ%>">
+			 <input type="hidden" name="id_c" value="<%=id_c%>">
+			 <button type="submit" name="confirmation" class="btn btn-primary col-md-offset-4 " style=" margin-top: 0.2cm;">Ajouter QCM</button>
+			</form>
+	     	<% break;
 	default:
 %>
 <jsp:forward page="welcomeProf" />

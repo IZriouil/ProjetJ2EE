@@ -1,7 +1,6 @@
 package web;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.Question;
-import entity.Utilisateur;
-import bean.BeanModule;
 import bean.BeanQCM;
 import bean.BeanQuestion;
 import bean.BeanUsers;
@@ -76,33 +72,16 @@ public class login extends HttpServlet {
 					
 					System.out.println("Succes Authentification");
 					String type =bean.getUser(username).getType();
-					System.out.println("voilaaa un ------"+type	);
-					
-					System.out.println("notre question a un id egal à "+beanQCM.getQCM_Questions_id(1).get(0).intValue());
-					Question uneQuestion = beanQuestion.getQuestionById(100);
-					System.out.println("notre premier question est "+uneQuestion.getEnonce());
-					List<String> listrep = uneQuestion.getReponses();
-					List<String> listrepJuste = uneQuestion.getReponsesJuste();
-
-					System.out.println("les reponses possibles sont  "+listrep.toString());
-					System.out.println("les reponses JUSTE  "+listrepJuste.get(0));
-
-
-					/*
-					 * ADD IF PROF OU ETUDIANT OU ADMIN D'APRES TYPED
-					 * etudiantServlet
-					 * profServlet
-					 * adminServlet
-					 */
+					System.out.println("Un "+type+" est connecte...");
 					
 					switch (type) {
 			        	case "Etud":this.getServletContext().getRequestDispatcher("/etudiantServlet?page=h").forward(request, response);	
 			                  break;        
 			        	case "Prof":this.getServletContext().getRequestDispatcher("/welcomeProf?page=h").forward(request, response);
 			                  break;
-			        	case "Admin":this.getServletContext().getRequestDispatcher("/welcomeAdmin?page=h").forward(request, response);	
+			        	case "Admin":this.getServletContext().getRequestDispatcher("/AdminServlet?page=h").forward(request, response);	
 			                  break;
-			        	default:  this.getServletContext().getRequestDispatcher("/etudiantServlet?page=h").forward(request, response);
+			        	default:  this.getServletContext().getRequestDispatcher("/error").forward(request, response);
 			                  break;
 					}
 					

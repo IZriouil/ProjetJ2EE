@@ -9,27 +9,30 @@ INSERT INTO Module (id,titre,prof_id) VALUES ('14','l9wada', 'Moha');
 INSERT INTO Module (id,titre,prof_id) VALUES ('4','Beans', 'Moha');
 INSERT INTO INSCRIPTION  VALUES ('12-12-2015','33', '12','Issam');
 INSERT INTO INSCRIPTION  VALUES ('12-08-2017','37', '4','Issam');
-INSERT INTO QCM  VALUES ('1', '12');
-INSERT INTO QCM  VALUES ('2', '12');
-INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('20','heritage java', 'contenu chapitre...','1','12');
-INSERT INTO CHAPITRE  (id,titre,text,controle_id,module_id)  VALUES ('30','interfaces', 'contenu chapitre...contenu   is simply dummy text of the printing and typesetting industry industry chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...','2','12');
+INSERT INTO QCM(id,AFFICHERSCORE,minscore,nombreQuestion)  VALUES ('40','true', '12','2');
+INSERT INTO QCM(id,AFFICHERSCORE,minscore,nombreQuestion)  VALUES ('50','true', '12','2');
+INSERT INTO QCM(id,AFFICHERSCORE,minscore,nombreQuestion)  VALUES ('60','true', '12','2');
+INSERT INTO QCM(id,AFFICHERSCORE,minscore,nombreQuestion)  VALUES ('70','true', '12','2');
+INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('20','heritage java', 'contenu chapitre...bla bla bla bla bla','40','12');
+INSERT INTO CHAPITRE  (id,titre,text,controle_id,module_id)  VALUES ('30','interfaces', 'contenu chapitre...contenu   is simply dummy text of the printing and typesetting industry industry chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...','50','12');
+INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('80','heritage java', 'contenu chapitre...','60','12');
+INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('90','Titre chapitre', 'contenu chapitre...','70','12');
+INSERT INTO VALIDATION ( CONTROLE_ID , DATEVALIDATION , NBESSAI , SCORE_VALIDATION, ETUDIANT_ID  ) VALUES ( '40',' ','2','2','Issam')
 //Question
 
 //question 100
 //qyestion 1001
 //Question Issam2211 quimarque
-INSERT INTO Question  VALUES ('100', 'en quelle annngage java ?','1');
+INSERT INTO Question  VALUES ('100', 'en quelle annee ngage java ?','40');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1993');
 INSERT INTO QUESTION_REPONSES VALUES ('100', 'en 1995');
 INSERT INTO QUESTION_REPONSESJUSTE  VALUES ('100', 'en 1995');
 //question 200
 
-INSERT INTO Question  VALUES ('200', 'Java est un langage ?','1');
+INSERT INTO Question  VALUES ('200', 'Java est un langage ?','40');
 INSERT INTO QUESTION_REPONSES VALUES ('200', 'compil');
 INSERT INTO QUESTION_REPONSES VALUES ('200', 'int');
 INSERT INTO QUESTION_REPONSES VALUES ('200', 'ni compi');
 
 INSERT INTO QUESTION_REPONSESJUSTE  VALUES ('200', 'int');
 INSERT INTO QUESTION_REPONSESJUSTE  VALUES ('200', 'compil');
-
-  

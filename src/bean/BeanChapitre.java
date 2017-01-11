@@ -9,9 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entity.Chapitre;
-import entity.Inscription;
 import entity.Module;
-import entity.QCM;
 
 @Stateless
 @LocalBean
@@ -37,5 +35,29 @@ public class BeanChapitre {
 	}
 	
 
-	public void aAccesChapitreSuivant(){}
+	public Chapitre getChapitreId(int chapitreId){
+		Query query = em.createQuery("select c from Chapitre c where id  = :ID");
+		query.setParameter("ID",chapitreId);
+		
+		return (Chapitre)query.getSingleResult();
+		
+	}
+	public Chapitre updateControle (Chapitre chapitre) {
+	    return em.merge(chapitre);
+	}
+	public Chapitre nextChapitre(int mod_id,int chap_id) {
+		
+		List<Chapitre> chapitres=this.getChapitreByModuleId(mod_id);
+		boolean found=false;
+		
+		for (Chapitre chapitre : chapitres) {
+			if(found){
+				return chapitre;
+			}
+			if(chapitre.getId()==chap_id){
+				found=true;
+			}
+		}
+		return null;
+	}
 }

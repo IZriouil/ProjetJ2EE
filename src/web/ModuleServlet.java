@@ -35,8 +35,8 @@ public class ModuleServlet extends HttpServlet {
 	private BeanQCM beanQCM;
 	@EJB
 	private BeanQuestion beanQuestion;
-   
-   
+	private	List<Question> listQuestionsQCM = new ArrayList<Question>();
+
     public ModuleServlet() {
         super();
     }
@@ -45,9 +45,14 @@ public class ModuleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String module=request.getParameter("id_m");
 		List<Chapitre> listChapitre = new ArrayList<Chapitre>();
-		List<Question> listQuestionsQCM = new ArrayList<Question>();
+
 		String username = (String) request.getSession().getAttribute("username");
 		
+		// Correction du qcm
+		String reponse =request.getParameter("1001");
+		System.out.println("vous avez cocher la case ---------"+reponse);
+
+
 		if(module!=null){
 			request.getSession().setAttribute("module", module);	
 			System.out.println("les chapitres de ce module von etre affiches---------"+module);
@@ -65,7 +70,7 @@ public class ModuleServlet extends HttpServlet {
 			while(it.hasNext()){
 				 ch = it.next();
 				if(ch.getId()==Integer.parseInt(chapitre_id)){
-					System.out.println("------------------------bieeenjou" +ch.getTitre());
+					System.out.println("-le chapitre à afficher est " +ch.getTitre());
 					break;
 				}
 			}
@@ -76,6 +81,7 @@ public class ModuleServlet extends HttpServlet {
 
 		//traitement de la page
 		String page=request.getParameter("page");
+		if(page==null)page="qcm";
 		switch (page) {
         case "h": request.setAttribute("chapitres", listChapitre);
         		  System.out.println("looool"+bean.getUser(username).getType());
@@ -90,12 +96,14 @@ public class ModuleServlet extends HttpServlet {
         	  break;
                          
         case "qcm":
+        	if(request.getParameter("qcm_id")!=null){
     				int id_q=Integer.parseInt(request.getParameter("qcm_id"));
     				List<Integer> listIdQuestions =beanQCM.getQCM_Questions_id(id_q);
     				Iterator<Integer> itt = listIdQuestions.iterator();
     				while (itt.hasNext()) {
     					listQuestionsQCM.add(beanQuestion.getQuestionById(itt.next().intValue()));
 					}
+        	}
     				request.setAttribute("listQuestionsQCM", listQuestionsQCM);
   				    this.getServletContext().getRequestDispatcher("/WEB-INF/module.jsp?page=qcm").forward(request, response);
         	

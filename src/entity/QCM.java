@@ -2,32 +2,37 @@ package entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class QCM {
 		@Id @GeneratedValue
 		private int id;
-		@OneToMany
+		@OneToMany(fetch = FetchType.EAGER, targetEntity=Validation.class,mappedBy="controle")
 		private List<Validation> validations;
 		private int minScore;
-		@OneToMany
+		@OneToMany(fetch = FetchType.EAGER)
 		private List<Question> questions;
-		
+		private boolean afficherScore;
+		private int nombreQuestion;
 		public QCM() {
 			super();
 		}
 
-		public QCM(List<Validation> validations, int minScore,
+		public QCM( int minScore,boolean afficherScore,int nombreQuestion,
 				List<Question> questions) {
-			super();
-			this.validations = validations;
+			
+			
 			this.minScore = minScore;
-			this.questions = questions;
+			
+			this.afficherScore=afficherScore;
+			this.nombreQuestion=nombreQuestion;
+			this.questions=questions;
 		}
 		public int getId() {
 			return id;
@@ -55,7 +60,23 @@ public class QCM {
 		public void setQuestions(List<Question> questions) {
 			this.questions = questions;
 		}
-		
+		public boolean isAfficherScore() {
+			return afficherScore;
+		}
+
+		public void setAfficherScore(boolean afficherScore) {
+			this.afficherScore = afficherScore;
+		}
+
+		public int getNombreQuestion() {
+			return nombreQuestion;
+		}
+
+		public void setNombreQuestion(int nombreQuestion) {
+			this.nombreQuestion = nombreQuestion;
+		}
+
+
 		
 		
 

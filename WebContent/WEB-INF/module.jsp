@@ -60,8 +60,14 @@
 					  <td class="success">${chapitre.module.prof.id}</td>
 					  <td class="success">${chapitre.module.titre}</td>
 					  <td class="success"><a href="ModuleServlet?page=lire&ch_id=${chapitre.id}" >Lire</a></td>
-					  <td class="success"><a href="ModuleServlet?page=qcm&qcm_id=${chapitre.controle.id}" >QCM</a></td>	
-					  
+					  <c:choose>
+					  	<c:when test='${not empty chapitre.controle.id}'>	
+					  		<td class="success"><a href="ModuleServlet?page=qcm&qcm_id=${chapitre.controle.id}" >QCM</a></td>	
+					  	</c:when>
+					  	<c:otherwise>
+					  		<td class="success"><a href="welcomeProf?page=qf&id_c=${chapitre.id}" >Ajouter QCM</a></td>
+					  	</c:otherwise>
+					  </c:choose>
 					  
 				 </tr>
 		</c:forEach>
@@ -79,25 +85,29 @@
 		break;
 		case "qcm":
 	%>
+			<form action="ModuleServlet" method="get">
 					<div class="table-responsive">
 							  <table class="table"> 								
 								<c:forEach items="${listQuestionsQCM}" var="uneQuestion">
 										  <tr>
 											  <td class="">${uneQuestion.getEnonce()}</td>
-											  
-											  <c:forEach items="${uneQuestion.reponses}" var="reponse">
-											  		<td class="">
-											  			<label class="checkbox-inline">
-												  		<input type="checkbox" id="inlineCheckbox1" value="option1"> ${reponse}
-														</label>
-													</td>					  						  		  
-											  </c:forEach>
+												  	<% int i =1; %>
+												  	<c:forEach items="${uneQuestion.reponses}" var="reponse">
+												  	<td class="">
+												  		<label class="checkbox-inline">
+															<input type="checkbox" name="${uneQuestion.getIdQuestion()}<%out.print(i);%>" id="${uneQuestion.getIdQuestion()}<%out.print(i);%>"  value="${reponse}"> ${reponse} 
+														 </label>
+													</td>
+													<%  i ++; %>					  						  		  
+												   </c:forEach>
 											  <td class=""></td>
 					  								  							  						  		  
 										 </tr>
 								</c:forEach>
 							</table>
 					</div>
+				<input type="submit" value="Submit">
+			</form>
 	
 	<%
 		break;
