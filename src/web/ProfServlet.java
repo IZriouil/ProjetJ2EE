@@ -13,7 +13,7 @@ import entity.Module;
 import bean.BeanChapitre;
 import bean.BeanModule;
 
-
+@WebServlet("/welcomeProf")
 public class ProfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
