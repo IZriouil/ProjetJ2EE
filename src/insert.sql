@@ -1,8 +1,13 @@
 INSERT INTO Utilisateur (type,id,mdp) VALUES ('Admin','admin', 'admin');
 INSERT INTO Utilisateur (type,id,mdp) VALUES ('Etud','Issam', 'sa');
 INSERT INTO Utilisateur (type,id,mdp) VALUES ('Prof','Ben', 'sa');
+INSERT INTO Utilisateur (type,id,mdp) VALUES ('Prof','test0', 'sa');
+INSERT INTO Utilisateur (type,id,mdp) VALUES ('Etud','test1', 'sa');
+INSERT INTO Utilisateur (type,id,mdp) VALUES ('Admin','test2', 'admin');
 INSERT INTO Utilisateur (type,id,mdp) VALUES ('Prof','Moha', 'sa');
 INSERT INTO Utilisateur (type,id,mdp) VALUES ('Prof','sdba', 'sdba');
+
+
 INSERT INTO Module (id,titre,prof_id) VALUES ('12','Java', 'Ben');
 INSERT INTO Module (id,titre,prof_id) VALUES ('13','SWIFT', 'Ben');
 INSERT INTO Module (id,titre,prof_id) VALUES ('14','l9wada', 'Moha');
