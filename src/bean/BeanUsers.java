@@ -8,7 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entity.Etudiant;
+import entity.Prof;
+import entity.QCM;
+import entity.Question;
 import entity.Utilisateur;
+import entity.Validation;
 
 /**
  * Session Bean implementation class BeanUsers
@@ -44,6 +49,34 @@ public class BeanUsers {
 		return (Utilisateur)query.getSingleResult();
 	}
 	
-    
-
+	public int removeUser(String id){
+		
+		//Query query = em.createQuery("delete from Utilisateur  where id = :ID");
+		Utilisateur utilisateur =em.find(Utilisateur.class,id);
+		//System.out.println("remove user   "+utilisateur.getId());
+		if(utilisateur!=null)
+			em.remove(utilisateur);
+			em.flush();
+		return 0;
+	}
+	
+	public Utilisateur addUser(String login,String passwd,String type){
+		
+				Utilisateur user;
+				if(type.equals("Etud"))
+					 user= new Etudiant();
+				else
+					 user = new Prof();
+					
+				user.setId(login);
+				user.setPassword(passwd);
+			try{	
+				em.persist(user);
+				em.flush();
+			}
+			catch(Exception e){
+				System.out.println("Erreur insertion Etudiant \n"+e.getStackTrace());
+			}
+		return user;					
+	}	   			
 }

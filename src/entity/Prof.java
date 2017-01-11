@@ -2,15 +2,19 @@ package entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Prof")
 public class Prof extends Utilisateur {
 
-	@OneToMany 
+	
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=true) 
 	private List<Module> modules;
 	
 	

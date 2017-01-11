@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,7 +22,7 @@ public class Module {
 	private List<Chapitre> chapitres;
 	@OneToMany(fetch = FetchType.EAGER, targetEntity=Chapitre.class,mappedBy="module",orphanRemoval=true) 
 	private List<Inscription> inscriptions;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Prof prof;
 	public int getId() {
 		return id;
