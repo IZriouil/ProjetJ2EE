@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Module {
 	
+	
 	@Id @GeneratedValue
 	private int id;
 	private String titre; 
