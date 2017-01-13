@@ -19,6 +19,16 @@
     </function>
     
     <function>
+        <name>profOwner</name>
+        <function-class>
+            bean.UtilsJSP
+        </function-class>
+        <function-signature>
+            java.lang.Boolean profOwner(entity.Module,java.lang.String )
+        </function-signature>
+    </function>
+    
+    <function>
         <name>getInscription</name>
         <function-class>
             bean.UtilsJSP
@@ -27,6 +37,17 @@
             entity.Inscription getInscription(java.util.List ,java.lang.String )
         </function-signature>
     </function>
+    
+    <function>
+        <name>getValidation</name>
+        <function-class>
+            bean.UtilsJSP
+        </function-class>
+        <function-signature>
+            entity.Validation getValidation(entity.Chapitre ,java.lang.String )
+        </function-signature>
+    </function>
+    
     <function>
         <name>validationChapitre</name>
         <function-class>

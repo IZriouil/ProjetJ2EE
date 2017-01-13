@@ -99,6 +99,7 @@ public class BeanQCM {
 		return false;
 	}
 		
+	@SuppressWarnings("unchecked")
 	public List<Integer> getQCM_Questions_id(int Id){
 		Query query = em.createQuery("select idQuestion  from Question   where controle.id  = :ID");
 		query.setParameter("ID",Id);

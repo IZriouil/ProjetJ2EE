@@ -10,10 +10,7 @@ import javax.persistence.Query;
 
 import entity.Etudiant;
 import entity.Prof;
-import entity.QCM;
-import entity.Question;
 import entity.Utilisateur;
-import entity.Validation;
 
 /**
  * Session Bean implementation class BeanUsers
@@ -29,6 +26,7 @@ public class BeanUsers {
         
     }
 	
+	@SuppressWarnings("unchecked")
 	public List<Utilisateur> getAllUsers() {   
         Query q = em.createQuery("select u from Utilisateur u");  
         return q.getResultList();  

@@ -138,6 +138,12 @@
 										      	<c:if test="${isValide==2}">								      	
 										        	<a class="btn btn-primary" href="etudiantServlet?page=q&chap_id=${chapitre.id}" >Examinez-vous</a>
 										        </c:if>
+										        <c:if test="${isValide==1}">
+										        <c:if test="${chapitre.controle.afficherScore}">
+										        	<c:set var="validation" value="${tf:getValidation(chapitre,username)}"/>								      	
+										        	<span style="color: green" >valide avec le score <strong>${validation.score_validation}/${chapitre.controle.nombreQuestion}</strong></span>
+										        </c:if>
+										        </c:if>
 										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										      </div>
 										    </div>
@@ -274,6 +280,12 @@
 										      <div class="modal-footer">
 										      	<c:if test="${isValide==2}">								      	
 										        	<a class="btn btn-primary" href="etudiantServlet?page=q&chap_id=${chapitre.id}" >Examinez-vous</a>
+										        </c:if>
+										        <c:if test="${isValide==1}">
+										        <c:if test="${chapitre.controle.afficherScore}">
+										        	<c:set var="validation" value="${tf:getValidation(chapitre,username)}"/>								      	
+										        	<span style="color: green" >valide avec le score <strong>${validation.score_validation}/${chapitre.controle.nombreQuestion}</strong></span>
+										        </c:if>
 										        </c:if>
 										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										      </div>

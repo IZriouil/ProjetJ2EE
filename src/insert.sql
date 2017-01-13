@@ -7,7 +7,6 @@ INSERT INTO Module (id,titre,prof_id) VALUES ('12','Java', 'Ben');
 INSERT INTO Module (id,titre,prof_id) VALUES ('13','SWIFT', 'Ben');
 INSERT INTO Module (id,titre,prof_id) VALUES ('14','l9wada', 'Moha');
 INSERT INTO Module (id,titre,prof_id) VALUES ('4','Beans', 'Moha');
-INSERT INTO INSCRIPTION  VALUES ('12-12-2015','33', '12','Issam');
 INSERT INTO INSCRIPTION  VALUES ('12-08-2017','37', '4','Issam');
 INSERT INTO QCM(id,AFFICHERSCORE,minscore,nombreQuestion)  VALUES ('40','true', '12','2');
 INSERT INTO QCM(id,AFFICHERSCORE,minscore,nombreQuestion)  VALUES ('50','true', '12','2');
@@ -17,7 +16,6 @@ INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('20','herita
 INSERT INTO CHAPITRE  (id,titre,text,controle_id,module_id)  VALUES ('30','interfaces', 'contenu chapitre...contenu   is simply dummy text of the printing and typesetting industry industry chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...contenu chapitre...','50','12');
 INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('80','heritage java', 'contenu chapitre...','60','12');
 INSERT INTO CHAPITRE (id,titre,text,controle_id,module_id)  VALUES ('90','Titre chapitre', 'contenu chapitre...','70','12');
-INSERT INTO VALIDATION ( CONTROLE_ID , DATEVALIDATION , NBESSAI , SCORE_VALIDATION, ETUDIANT_ID  ) VALUES ( '40',' ','2','2','Issam')
 //Question
 
 //question 100

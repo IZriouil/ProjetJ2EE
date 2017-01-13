@@ -31,6 +31,7 @@ public class ProfServlet extends HttpServlet {
 		String status=(String) request.getSession().getAttribute("status");
 		
 		if(status!=null && status.equals("up")){
+			//RADOUANE
 			
 			String page=request.getParameter("page");
 			switch (page) {

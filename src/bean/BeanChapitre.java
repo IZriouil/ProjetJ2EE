@@ -26,6 +26,8 @@ public class BeanChapitre {
 		em.flush();
 		return chapitre;
 	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Chapitre> getChapitreByModuleId(int moduleId){
 		Query query = em.createQuery("select c from Chapitre c where module.id  = :ID");
 		query.setParameter("ID",moduleId);

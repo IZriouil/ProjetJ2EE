@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import entity.Chapitre;
-import entity.Module;
 import entity.QCM;
 import entity.Question;
 

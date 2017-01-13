@@ -57,7 +57,9 @@ public class etudiantServlet extends HttpServlet {
 			
 			//Nouvelle d'inscription dans un module
 			if(request.getParameter("id_m") != null ){
-				beanM.Inscrire(username,Integer.parseInt(request.getParameter("id_m")));
+				int id_m=Integer.parseInt(request.getParameter("id_m"));
+				Module moduleToSignIn=beanM.getModule(id_m);
+				beanM.Inscrire((Etudiant)beanUsers.getUser(username),moduleToSignIn);
 
 			}
 			
@@ -77,8 +79,10 @@ public class etudiantServlet extends HttpServlet {
 					beanQCM.updateInscription(inscriptionToUpdate);
 					System.out.println("Niveau d'avancement Updated");
 					Chapitre nextChapitre=beanCH.nextChapitre(moduleToUpdate.getId(),chap_id);
-					beanQCM.createValidation(nextChapitre.getControle(), (Etudiant)beanUsers.getUser(username), " ", 0, 0);
-					System.out.println("Next Chapitre available now...");
+					if(nextChapitre!=null){
+						beanQCM.createValidation(nextChapitre.getControle(), (Etudiant)beanUsers.getUser(username), " ", 0, 0);
+						System.out.println("Next Chapitre available now...");
+					}
 				}
 				else {
 					System.out.println(username+" a validé !");
@@ -94,7 +98,6 @@ public class etudiantServlet extends HttpServlet {
 			}
 						
 			List<Module> modules=beanM.getAllModules();
-			List<Inscription> inscriptions=beanM.getModulesInscrits(username); 
 			
 
 			String page=request.getParameter("page");
